@@ -122,15 +122,19 @@ yy <- rep(NA, times = 30)
 # FizzBuzz code goes here
 
 for(i in xx){
-  if (x%%3==0 ){
-  y="Fizz"
+  if (i%%15==0 ){
+  yy[i]="FizzBuzz"
+} else if(i%%5==0 ){
+  yy[i]="Buzz"
+} else if(i%%3==0 ){
+  yy[i]="Fizz"
 } else {
-  y="NA"
+  yy[i]=yy
 }
 }
 
 # Printing the results in a data frame
-res <- cbind(x = xx, result = yy)
+res <- data.frame(x = xx, result = yy)
 res
 ```
 
@@ -156,13 +160,24 @@ xx <- sample(1:100, 10) # get a random xx
 yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
-  # Your code goes here
+  yy <- x
+for(i in seq_along(x)){
+  if (i%%15==0 ){
+  yy[i]="FizzBuzz"
+} else if(i%%5==0 ){
+  yy[i]="Buzz"
+} else if(i%%3==0 ){
+  yy[i]="Fizz"
+} else {
+  yy[i]=yy
+}
+}
+  return(yy)
 }
 
 yy <- fizzbuzz(x = xx)
-
 # Printing the results in a data frame
-res <- cbind(x = xx, result = yy)
+res <- data.frame(x = xx, result = yy)
 res
 ```
 
@@ -210,8 +225,26 @@ See more examples of this in the [Input Validation](https://srvanderplas.github.
 xx <- sample(1:100, 10) # get a random xx
 yy <- rep(NA, 10)
 
+
+
 fizzbuzz <- function(x) {
-  # Your code goes here
+  if (!is.integer(x)) {
+    stop("Input is wrong, x can not be a float/character/negative/NA, put integer only")
+  } 
+  yy <- x
+for(i in seq_along(x)){
+  if (i%%15==0 ){
+  yy[i]="FizzBuzz"
+} else if(i%%5==0 ){
+  yy[i]="Buzz"
+} else if(i%%3==0 ){
+  yy[i]="Fizz"
+} else {
+  yy[i]=x[i]
+}
+}
+  return(yy)
+  
 }
 
 yy <- fizzbuzz(x = xx)
