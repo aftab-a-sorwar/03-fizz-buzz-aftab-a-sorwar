@@ -79,7 +79,10 @@ if (x%%3==0){
 x = 3
 
 # FizzBuzz code goes here
-
+if x % 3 == 0:
+    print("Fizz")
+else:
+    print("NA")
 ```
 
 Modify the code above so that the result is stored in a value `y`.
@@ -103,6 +106,13 @@ import numpy as np
 x = 3
 y = np.nan
 # FizzBuzz code goes here
+
+if x % 3 == 0:
+    y = "Fizz"
+else:
+    y = "NA"
+
+print(y)
 
 
 
@@ -134,7 +144,7 @@ for(i in xx){
 }
 
 # Printing the results in a data frame
-res <- data.frame(x = xx, result = yy)
+res <- cbind(x = xx, result = yy)
 res
 ```
 
@@ -144,7 +154,19 @@ xx = np.array(range(30)) + 1
 yy = [np.nan]*30
 
 # FizzBuzz code goes here
+for i in range(len(xx)):
+    if xx[i] % 15 == 0:
+        yy[i] = "FizzBuzz"
+    elif xx[i] % 5 == 0:
+        yy[i] = "Buzz"
+    elif xx[i] % 3 == 0:
+        yy[i] = "Fizz"
+    else:
+        yy[i] = xx[i]
 
+print(yy)
+
+print(yy)
 
 # Printing the results in a data frame
 res = pd.DataFrame({"x": xx, "result": yy})
@@ -177,19 +199,31 @@ for(i in seq_along(x)){
 
 yy <- fizzbuzz(x = xx)
 # Printing the results in a data frame
-res <- data.frame(x = xx, result = yy)
+res <- cbind(x = xx, result = yy)
 res
 ```
 
 ```{python function-fizzbuzz-py}
 import pandas as pd
+import numpy as np
 from random import choices
 xx = np.array(choices(range(100), k = 10)) + 1
 
 
 def fizzbuzz(x):
+  if np.isscalar(x):
+    x=np.array([x])
   y = [np.nan]*len(x) # this just defines something to return
   # Your code goes here
+  for i in range(len(x)):
+      if (i + 1) % 15 == 0:
+          y[i] = "FizzBuzz"
+      elif (i + 1) % 5 == 0:
+          y[i] = "Buzz"
+      elif (i + 1) % 3 == 0:
+          y[i] = "Fizz"
+      else:
+          y[i] = x[i]
   return y
 
 yy = fizzbuzz(x = xx)
@@ -261,8 +295,24 @@ xx = np.array(choices(range(100), k = 10)) + 1
 
 
 def fizzbuzz(x):
+  def check_integer(x):
+    if not isinstance(x, int) or x < 0:
+        raise ValueError("Input is wrong, x cannot be a float/character/negative/NA, put integer only")
+  y = [np.nan]*len(x) # this just defines something to return
+  if np.isscalar(x):
+    x=np.array([x])
   y = [np.nan]*len(x) # this just defines something to return
   # Your code goes here
+  for i in range(len(x)):
+      if (i + 1) % 15 == 0:
+          y[i] = "FizzBuzz"
+      elif (i + 1) % 5 == 0:
+          y[i] = "Buzz"
+      elif (i + 1) % 3 == 0:
+          y[i] = "Fizz"
+      else:
+          y[i] = x[i]
+
   return y
 
 yy = fizzbuzz(x = xx)
