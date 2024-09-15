@@ -59,7 +59,7 @@ Start by filling in the following table for the numbers 1:30 manually, to get a 
 
 On paper or using a tool such as <https://excalidraw.com>, create a program flow map for the sequence of if-statements you need to evaluate for fizzbuzz. Add the picture to the folder containing this file, and name the picture flowchart.png. Add the picture to Git and commit/push your changes.
 
-![Program Flow map for FizzBuzz](flowchart.png)
+[![**Program Flow map for FizzBuzz**](images/Screenshot 2024-09-14 195938.png)](https://excalidraw.com/#json=sJ6MlS5MFUGj6uBEvu2yj,HmnJYmOzJZq-knmSKm0GfQ)
 
 In the chunk below, write code which will solve this problem for a single value `x`. You should be able to change the value of x at the top of the chunk and still get the correct answer.
 
@@ -150,6 +150,7 @@ res
 
 ```{python vector-fizzbuzz-py, echo = T}
 import pandas as pd
+import numpy as np
 xx = np.array(range(30)) + 1
 yy = [np.nan]*30
 
@@ -290,6 +291,7 @@ res
 
 ```{python function-error-fizzbuzz-py}
 import pandas as pd
+import numpy as np
 from random import choices
 xx = np.array(choices(range(100), k = 10)) + 1
 
